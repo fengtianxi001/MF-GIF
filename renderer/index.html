@@ -3,264 +3,131 @@
 	<head>
 		<meta charset="UTF-8" />
 		<title>imgs2gif</title>
-		<link rel="stylesheet" href="../styles/element.css" />
-		<style>
-			* {
-				padding: 0;
-				margin: 0;
-				box-sizing: border-box;
-			}
-			.el-dialog__body {
-				padding: 20px !important;
-			}
-
-			.el-dialog__header {
-				padding-bottom: 0px !important;
-			}
-			#app {
-				padding: 10px;
-			}
-			#uploadPage {
-				width: 100%;
-				height: 100%;
-				position: relative;
-			}
-			#imgsShow {
-				width: 100%;
-				height: 415px;
-				overflow-y: scroll;
-				/* padding-bottom: 20px; */
-			}
-			#imgsShow::-webkit-scrollbar {
-				width: 0 !important;
-			}
-			.submitBtn {
-				width: 100%;
-				/* position: fixed; */
-				/* bottom: 10px; */
-				/* width: calc(100% - 20px); */
-				/* left: 10px; */
-			}
-		</style>
+		<link rel="stylesheet" href="../styles/index.css" />
+		<link rel="stylesheet" href="../styles/home.css" />
+		<link rel="stylesheet" href="../styles/config.css" />
 	</head>
 
 	<body>
-		<div id="app" v-loading="loading">
-			<div id="uploadPage" v-show="uploadPageVisible">
-				<div id="imgsShow">
-					<el-upload
-						action="https://jsonplaceholder.typicode.com/posts/"
-						list-type="picture-card"
-						:on-preview="handlePictureCardPreview"
-						:on-remove="handleRemove"
-						:on-success="handleSuccess"
-						:on-change="handleChange"
-						:auto-upload="true"
-						:multiple="true"
-						ref="upload"
-						:http-request="httpRequest"
-					>
-						<i class="el-icon-plus"></i>
-					</el-upload>
-				</div>
-
-				<el-button type="primary" @click="submitList" class="submitBtn">
-					submit
-				</el-button>
-			</div>
-			<div id="setPage" v-show="setPageVisible">
-				<ul class="setForm">
-					<li>
-						<span>设置宽度:</span>
-						<input type="number" v-model="setOptions.gifWidth" @blur="createGif"/>
-					</li>
-					<li>
-						<span>设置高度:</span>
-						<input type="number" v-model="setOptions.gifHeight" @blur="createGif"/>
-					</li>
-					<li>
-						<span>设置切换间隔:</span>
-						<input type="number" v-model="setOptions.interval" @blur="createGif"/>
-					</li>
-					<li>
-						<el-button @click="createGif">生成gif</el-button>
-						<el-button @click="goto('uploadPage')">重新选图</el-button>
-						<el-button @click="savePicture">保存到本地</el-button>
-					</li>
+		<div id="app">
+			<div id="nav">
+				<ul class="nav-options">
+					<li class="options-close" @click="close"></li>
+					<li class="options-min" @click="minisize"></li>
+					<li class="options-max"></li>
 				</ul>
-				<img :src="imgUrl" alt="gif" />
+				<div class="nav-title">Img to Gif</div>
 			</div>
-			<el-dialog :visible.sync="dialogVisible" :title="dialogTitle">
-				<img width="100%" :src="dialogImageUrl" alt="" />
-			</el-dialog>
+			<div class="container">
+				<div class="c-left">
+					<div class="tips">快速开始</div>
+					<ul class="process">
+						<router-link :to="path" v-for="{index,text,path} in processData" :key="index">
+							<li :class="{active:index<=process}">
+								<i>{{index}}</i>
+								<span>{{text}}</span>
+							</li>
+						</router-link>
+					</ul>
+				</div>
+				<div class="c-right">
+					<router-view></router-view>
+				</div>
+			</div>
 		</div>
-		<script
-			src="../scripts/vue.min.js"
-			type="application/javascript"
-		></script>
-		<script
-			src="../scripts/element.js"
-			type="application/javascript"
-		></script>
-		<script src="../scripts/gifshot.min.js"></script>
-		<script>
-			const { ipcRenderer } = require('electron')
-			new Vue({
-				el: '#app',
-				data() {
-					return {
-						dialogImageUrl: '',
-						dialogVisible: false,
-						filelist: [],
-						imgUrl: '',
-						dialogTitle: '',
-						loading: false,
-						setPageVisible: false,
-						uploadPageVisible: true,
-						form: {
-							name: '',
-							region: '',
-							date1: '',
-							date2: '',
-							delivery: false,
-							type: [],
-							resource: '',
-							desc: '',
-						},
-						setOptions: {
-							gifWidth: 200,
-							gifHeight: 200,
-							interval: 0.1,
-						},
-					}
-				},
-				methods: {
-					handleRemove(file, fileList) {
-						console.log(file, fileList)
-					},
-					handleSuccess(file, fileList) {
-						console.log(file, fileList)
-					},
-					handleChange(file, fileList) {
-						console.log(file, fileList)
-					},
-					handlePictureCardPreview(file) {
-						this.dialogTitle = file.name
-						this.dialogImageUrl = file.url
-						this.dialogVisible = true
-					},
-					httpRequest(demo1, demo2) {
-						console.log(demo1, demo2)
-					},
-					submitList() {
-						this.loading = true
-						const array = this.$refs.upload.uploadFiles
-						const arr = []
-						array.forEach((file, index) => {
-							var reader = new FileReader()
-							reader.onload = e => {
-								arr.push(e.target.result)
-								if (index == array.length - 1) {
-									// console.log(arr);
+		<!-- components HOME-->
+		<template id="home">
+			<div class="add-img">
+				<div class="add-img-tips" @click="pick" v-if="files.length===0">
+					<img src="../assets/picture.png" alt="add-img" />
+					<div style="font-size: 13px">点击添加图片</div>
+				</div>
+				<ul class="img-container" v-else>
+					<li
+						class="img-panel"
+						v-for="{name,path,size,lastModified,id} in files"
+						:key="id"
+						@click="panelHandle(id)"
+						:class="{active: active===id}"
+					>
+						<img :src="path" />
+						<div class="img-panel-operate">
+							<div>{{name}}</div>
+							<div>{{lastModified|dateFormat}}</div>
+							<div>{{size|sizeFormat}}</div>
+						</div>
+						<!-- <i class="img-panel-del"></i> -->
+					</li>
+					<ul class="img-container-opreate">
+						<li @click="direction(-1)" class="up" v-show="active">
+							<img src="../assets/up.png" alt="select" />
+						</li>
+						<li @click="direction(+1)" class="down" v-show="active">
+							<img src="../assets/down.png" alt="select" />
+						</li>
 
-									this.fileList = arr
-									this.createGif(arr)
-									this.goto('setPage')
-								}
-							}
-							reader.readAsDataURL(file.raw)
-						})
-						// reader.readAsDataURL(files[key])
-						// console.log()
-					},
-					goto(target) {
-						if (target === 'uploadPage') {
-							this.uploadPageVisible = true
-							this.setPageVisible = false
-						} else if (target === 'setPage') {
-							this.uploadPageVisible = false
-							this.setPageVisible = true
-						}
-					},
-					onSubmit() {
-						console.log('submit!')
-					},
-					createGif() {
-						this.loading = true
-						const params = this.fileList
-						const { gifWidth, gifHeight, interval } = this.setOptions
-						const that = this
-						gifshot.createGIF(
-							{
-								images: params,
-								gifWidth,
-								gifHeight,
-								interval, // seconds
-								progressCallback: function (captureProgress) {
-									if (captureProgress == 1) {
-										that.loading = false
-										// that.setPageVisible = true
-										// that.uploadPageVisible = false
-									}
-								},
-								completeCallback: () => {
-									console.log(this)
-								},
-								numWorkers: 2,
-							},
-							obj => {
-								// console.log(obj);
-								that.loading = false
-								this.imgUrl = obj.image
-								// ipcRenderer.send('download', obj.image)
-								// this.savePicture(obj)
-								// console.log(obj)
-							}
-						)
-					},
-					savePicture() {
-						const Url = this.imgUrl
-						var blob = new Blob([''], {
-							type: 'application/octet-stream',
-						})
-						var url = URL.createObjectURL(blob)
-						var a = document.createElement('a')
-						a.href = Url
-						a.download = Url.replace(
-							/(.*\/)*([^.]+.*)/gi,
-							'$2'
-						).split('?')[0]
-						var e = document.createEvent('MouseEvents')
-						e.initMouseEvent(
-							'click',
-							true,
-							false,
-							window,
-							0,
-							0,
-							0,
-							0,
-							0,
-							false,
-							false,
-							false,
-							false,
-							0,
-							null
-						)
-						a.dispatchEvent(e)
-						URL.revokeObjectURL(url)
-					},
-				},
-				// watch: {
-				// 	setOptions: {
-				// 		deep: true,
-				// 		handler(){
-				// 			this.createGif()
-				// 		}
-				// 	}
-				// }
-			})
-		</script>
+						<li class="del" @click="del" v-show="active">
+							<img src="../assets/ashbin.png" alt="del" />
+						</li>
+						<li @click="pick">
+							<img src="../assets/add2.png" alt="add" />
+						</li>
+						<li @click="next" class="next">下一步</li>
+					</ul>
+				</ul>
+			</div>
+		</template>
+		<!-- components CONFIG-->
+		<template id="config">
+			<div class="config-page">
+				<div class="config-conatiner">
+					<ul class="config-form">
+						<li class="config-form-item">
+							<label for="width">宽度:</label>
+							<div class="config-form-item-tips">设置动图的宽度</div>
+							<div class="config-form-item-shell">
+								<input id="width" v-model="form.gifWidth" />
+								<span class="unit">像素</span>
+							</div>
+						</li>
+						<li class="config-form-item">
+							<label for="width">高度:</label>
+							<div class="config-form-item-tips">设置动图的高度</div>
+							<div class="config-form-item-shell">
+								<input id="width" v-model="form.gifHeight" />
+								<span class="unit">像素</span>
+							</div>
+						</li>
+						<li class="config-form-item">
+							<label for="width">间隔:</label>
+							<div class="config-form-item-tips">设置图片切换的间隔</div>
+							<div class="config-form-item-shell">
+								<input id="width" v-model="form.interval" />
+								<span class="unit">秒</span>
+							</div>
+						</li>
+						<li class="config-form-item">
+							<label for="width">操作:</label>
+							<div class="config-form-item-tips">预览后才可以保存</div>
+							<div class="config-form-item-operate">
+								<button @click="prev" class="canSave">预览</button>
+								<button @click="save" style="margin-left: 4px" :class="{canSave:canSave}">保存</button>
+							</div>
+						</li>
+					</ul>
+					<div class="preview config-form-item">
+						<label for="width">效果预览:</label>
+						<div class="config-form-item-tips">预览的图片的大小，并非最终的图片尺寸</div>
+						<div class="config-form-item-shell" v-if="previewImage">
+							<img :src="previewImage" alt="preview" />
+						</div>
+					</div>
+				</div>
+			</div>
+		</template>
 	</body>
+	<script src="../scripts/gifshot.min.js"></script>
+	<script src="../scripts/vue.min.js"></script>
+	<script src="../scripts/vue-router.js"></script>
+	<script src="../scripts/index.js"></script>
 </html>

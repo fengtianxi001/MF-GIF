@@ -1,22 +1,21 @@
 
 const { app, BrowserWindow, ipcMain, Menu } = require('electron')
-const path = require('path')
-process.env['ELECTRON_DISABLE_SECURITY_WARNINGS'] = 'true' 
-app.on("ready",()=>{
-  const mainWindow = new BrowserWindow({
+Menu.setApplicationMenu(null)
+process.env['ELECTRON_DISABLE_SECURITY_WARNINGS'] = 'true'
+app.on("ready", () => {
+	const mainWindow = new BrowserWindow({
 		width: 655,
 		height: 500,
-		webPreferences: {	
+		frame: false,
+		resizable:false,
+		webPreferences: {
 			nodeIntegration: true,
 			contextIsolation: false,
+			enableRemoteModule:true
 		}
-	//   titleBarStyle:"hiddenInset"
-  })
-	ipcMain.on("download",(params,params2)=>{
-		// console.log(params, params2);
+	})
+	ipcMain.on("download", (params, params2) => {
 		mainWindow.webContents.downloadURL(params2)
 	})
-  
- //Menu.setApplicationMenu(null)
-  mainWindow.loadFile("./renderer/index.html") 
+	mainWindow.loadFile("./renderer/index.html")
 })

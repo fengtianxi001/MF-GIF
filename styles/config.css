@@ -1,0 +1,107 @@
+.config-page{
+    width: 100%;
+    height: 472px;
+    padding: 10px;
+}
+.config-conatiner{
+    /* width: 100%;
+    height: 100%;
+    background-color: #1a1a1a;
+    border-radius: 4px;
+    padding: 10px; */
+}
+.config-form{
+    display: grid;
+	grid-template-columns: 1fr 1fr;
+}
+.config-form-item{
+    border-left: 2px solid #4964d7;
+	margin-bottom: 20px;
+	padding-left: 14px;
+	position: relative;
+    font-size: 12px;
+}
+.config-form-item label{
+	display: block;
+	font-size: 13px;
+	height: 22px;
+	font-weight: 600;
+	/* height: 30px; */
+	/* background-color: #1a1a1a; */
+}
+.config-form-item-tips{
+    font-size: 12px;
+	height: 22px;
+}
+.config-form-item-shell{
+    width: 140px;
+	height: 30px;
+	background-color: #1a1a1a;
+	border: none;
+	outline: none;
+	color: #9a9a9a;
+	border-radius: 4px;
+	position: relative;
+}
+.config-form-item-shell input{
+    width: 100%;
+	height: 30px;
+	background-color: #1a1a1a;
+	border: none;
+	outline: none;
+	color: #9a9a9a;
+	border-radius: 4px;
+	box-sizing: border-box;
+	padding-left: 10px;
+}
+.unit{
+    padding: 0 20px;
+	height: 26px;
+	background-color: #282828;
+	position: absolute;
+	bottom: 2px;
+	right: 2px;
+	font-size: 12px;
+	line-height: 26px;
+	border-radius: 4px;
+}
+.config-form-item-operate{
+	width: 160px;
+	height: 30px;
+	background-color: #1a1a1a;
+	border: none;
+	outline: none;
+	color: #9a9a9a;
+	border-radius: 4px;
+	position: relative;
+	display: flex;
+    padding: 2px;
+}
+
+.config-form-item-operate button{
+	width: 132px;
+	height: 22px;
+	border: none;
+	
+	border-radius: 4px;
+	margin:2px;
+	font-size: 12px;
+	cursor: pointer;
+    background-color: #282828;
+    color: #9a9a9a;
+}
+.preview .config-form-item-shell{
+    display: inline-block;
+    width: auto;
+    height: 200px;
+    padding: 6px;
+}
+.preview img{
+    width: auto;
+	height: 100%;
+	border-radius: 4px;
+}
+.config-form-item-operate .canSave{
+    background-color: #4964d7;
+	color: #fff;
+}
