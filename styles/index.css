@@ -22,6 +22,9 @@ html,
 body {
 	width: 100vw;
 	height: 100vh;
+	border-radius: 4px;
+	overflow: hidden;
+	background-color: #282828;
 }
 body {
 	display: flex;
@@ -69,6 +72,7 @@ body {
 	margin-left: 10px;
 	cursor: pointer;
 	transition: all .5s cubic-bezier(0.075, 0.82, 0.165, 1);
+	-webkit-app-region: no-drag;
 }
 .nav-options > li:hover {
 	width: 13px;

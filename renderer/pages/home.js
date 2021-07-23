@@ -11,6 +11,7 @@ const home = {
             const input = document.createElement("input")
             input.type = "file"
             input.multiple = "multiple"
+            input.accept="image/*"
             input.onchange = this.valueChange
             input.click()
         },

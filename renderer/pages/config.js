@@ -56,7 +56,7 @@ const home = {
 			var url = URL.createObjectURL(blob)
 			var a = document.createElement('a')
             a.href = base64
-            a.download = base64.replace(/(.*\/)*([^.]+.*)/gi, '$2').split('?')[0]
+            a.download = `img2Gif${new Date().getTime()}`
 			var e = document.createEvent('MouseEvents')
 			e.initMouseEvent('click', true, false, window, 0, 0, 0, 0, 0, false, false, false, false, 0, null)
 			a.dispatchEvent(e)

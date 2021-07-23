@@ -4,7 +4,7 @@ Menu.setApplicationMenu(null)
 process.env['ELECTRON_DISABLE_SECURITY_WARNINGS'] = 'true'
 app.on("ready", () => {
 	const mainWindow = new BrowserWindow({
-		width: 655,
+		width: 651,
 		height: 500,
 		frame: false,
 		resizable:false,
