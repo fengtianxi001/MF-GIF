@@ -1,7 +1,7 @@
 
 
 <div style="width:100%;display:flex;justify-content: center;flex-direction:column;align-items:center;"align="center">
-	<img style="width:120px" src="https://raw.githubusercontent.com/fengtianxi001/img2gif/main/favicon.ico">
+	<img style="width:100px" src="https://raw.githubusercontent.com/fengtianxi001/img2gif/main/favicon.ico">
   <h2 style="text-align:center;margin-top:10px">Img2gif</h2>
   <div>
   <img src="https://img.shields.io/github/languages/top/fengtianxi001/img2gif">
@@ -23,7 +23,7 @@
 
 ## 界面效果
 
-![show](https://raw.githubusercontent.com/fengtianxi001/img2gif/main/screenshot/index.png)
+![show](https://raw.githubusercontent.com/fengtianxi001/img2gif/main/screenshot/index2.png)
 
 ## 下载安装
 
