@@ -1,6 +1,6 @@
 
 
-<div style="width:100%;display:flex;justify-content: center;flex-direction:column;align-items:center">
+<div style="width:100%;display:flex;justify-content: center;flex-direction:column;align-items:center;"align="center">
 	<img style="width:120px" src="https://raw.githubusercontent.com/fengtianxi001/img2gif/main/favicon.ico">
   <h2 style="text-align:center;margin-top:10px">Img2gif</h2>
   <div>
