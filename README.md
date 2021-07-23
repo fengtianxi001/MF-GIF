@@ -1,25 +1,17 @@
-
-
-<div style="width:100%;display:flex;justify-content: center;flex-direction:column;align-items:center;"align="center">
-	<img style="width:100px" src="https://raw.githubusercontent.com/fengtianxi001/img2gif/main/screenshot/logo.png">
-  <span style="margin:10px 0;font-size:18px;font-weight:600">IMG2GIF</span>
-  <div>
-  	<img src="https://img.shields.io/github/languages/top/fengtianxi001/img2gif">
-  	<img src="https://travis-ci.org/boennemann/badges.svg?branch=master">
+<div align="center">
+	<img src="https://raw.githubusercontent.com/fengtianxi001/img2gif/main/screenshot/test.png">
+  	<p>
+  		<img src="https://img.shields.io/github/languages/top/fengtianxi001/img2gif">
+  		<img src="https://travis-ci.org/boennemann/badges.svg?branch=master">
  	 	<img src="https://img.shields.io/github/issues/fengtianxi001/img2gif">
-  	<img src="https://img.shields.io/github/forks/fengtianxi001/img2gif">
-  	<img src="https://img.shields.io/github/stars/fengtianxi001/img2gif">
-	</div>
-</div>
-
-
+  		<img src="https://img.shields.io/github/forks/fengtianxi001/img2gif">
+  		<img src="https://img.shields.io/github/stars/fengtianxi001/img2gif">
+	</p>
 <div>
-
-
 
 ## 应用概述
 
-**img2gif: 一个用于将多张图片转成gif动图的工具**
+**img2gif: 一个用于将多张图片转成 gif 动图的工具**
 
 ## 界面效果
 
