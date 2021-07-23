@@ -1,7 +1,7 @@
 
 
 <div style="width:100%;display:flex;justify-content: center;flex-direction:column;align-items:center;"align="center">
-	<img style="width:100px" src="https://raw.githubusercontent.com/fengtianxi001/img2gif/main/favicon.ico">
+	<img style="width:100px" src="https://raw.githubusercontent.com/fengtianxi001/img2gif/main/screenshot/logo.png">
   <span style="margin:10px 0;font-size:18px;font-weight:600">IMG2GIF</span>
   <div>
   	<img src="https://img.shields.io/github/languages/top/fengtianxi001/img2gif">
