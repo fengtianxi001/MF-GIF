@@ -7,7 +7,7 @@
   		<img src="https://img.shields.io/github/forks/fengtianxi001/img2gif">
   		<img src="https://img.shields.io/github/stars/fengtianxi001/img2gif">
 	</p>
-<div>
+</div>
 
 ## 应用概述
 
