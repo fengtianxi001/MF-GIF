@@ -11,7 +11,7 @@ const home = {
             const input = document.createElement("input")
             input.type = "file"
             input.multiple = "multiple"
-            input.accept="image/*"
+            input.accept = "image/*"
             input.onchange = this.valueChange
             input.click()
         },
@@ -25,14 +25,14 @@ const home = {
         },
         async valueChange(e) {
             const files = e.path[0].files
-            const arr= []
-            for (let i = 0; i < files.length;i++){
+            const arr = []
+            for (let i = 0; i < files.length; i++) {
                 const file = files[i]
                 const obj = {}
                 obj.name = file.name
                 obj.size = file.size
                 obj.path = await this.toBase64(file)
-                obj.id = Math.random()*100000
+                obj.id = Math.random() * 100000
                 arr.push(obj)
             }
             if (arr) {
@@ -41,14 +41,14 @@ const home = {
             }
         },
         toBase64(params) {
-            return new Promise((resolve,reject)=>{
+            return new Promise((resolve, reject) => {
                 var reader = new FileReader()
                 reader.onload = e => {
                     resolve(e.target.result)
                 }
                 reader.readAsDataURL(params)
             })
-            
+
         },
         panelHandle(id) {
             this.active = id
@@ -70,7 +70,7 @@ const home = {
         blur(event) {
             event.stopPropagation()
             let flag = event.path.find(el => {
-                const { className} = el
+                const { className } = el
                 return className && (className.indexOf("img-panel") >= 0 || className.indexOf("up") >= 0 || className.indexOf("down") >= 0 || className.indexOf("del") >= 0)
             })
             if (!flag) {
@@ -106,23 +106,65 @@ const home = {
     },
     mounted() {
         document.addEventListener("click", this.blur)
-        this.files = window.filesList||[]
-        
+        this.files = window.filesList || []
+
     },
     beforeDestroy() {
         document.removeEventListener("click", this.blur)
     },
     watch: {
         files: {
-            deep:true,
-            handler(files,old){
+            deep: true,
+            handler(files, old) {
                 window.filesList = files
                 const length = files.length
-                if (old.length !== length && length!==0)
-                    this.active = files[length-1]["id"]
+                if (old.length !== length && length !== 0)
+                    this.active = files[length - 1]["id"]
             }
         }
     },
-    template: document.getElementById("home")
+    template: `
+        <template id="home">
+			<div class="add-img">
+				<div class="add-img-tips" @click="pick" v-if="files.length===0">
+					<img src="../assets/picture.png" alt="add-img" />
+					<div style="font-size: 13px">点击添加图片</div>
+				</div>
+				<ul class="img-container" v-else>
+					<li
+						class="img-panel"
+						v-for="{name,path,size,lastModified,id} in files"
+						:key="id"
+						@click="panelHandle(id)"
+						:class="{active: active===id}"
+					>
+						<img :src="path" />
+						<div class="img-panel-operate">
+							<div>{{name}}</div>
+							<div>{{lastModified|dateFormat}}</div>
+							<div>{{size|sizeFormat}}</div>
+						</div>
+						<!-- <i class="img-panel-del"></i> -->
+					</li>
+					<ul class="img-container-opreate">
+						<li @click="direction(-1)" class="up" v-show="active">
+							<img src="../assets/up.png" alt="select" />
+						</li>
+						<li @click="direction(+1)" class="down" v-show="active">
+							<img src="../assets/down.png" alt="select" />
+						</li>
+
+						<li class="del" @click="del" v-show="active">
+							<img src="../assets/ashbin.png" alt="del" />
+						</li>
+						<li @click="pick">
+							<img src="../assets/add2.png" alt="add" />
+						</li>
+						<li @click="next" class="next">下一步</li>
+					</ul>
+				</ul>
+			</div>
+		</template>
+    `
 }
 module.exports = home
