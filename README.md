@@ -2,12 +2,12 @@
 <div align="center">
 	<img src="https://raw.githubusercontent.com/fengtianxi001/MF-IMG2GIF/main/sreenshot/poster.png">
   <div>
-    <img src="https://img.shields.io/github/languages/top/fengtianxi001/MTools">
+    <img src="https://img.shields.io/github/languages/top/fengtianxi001/MF-IMG2GIF">
     <img src="https://travis-ci.org/boennemann/badges.svg?branch=master">
-    <img src="https://img.shields.io/github/issues/fengtianxi001/MTools">
-    <img src="https://img.shields.io/github/forks/fengtianxi001/MTools">
-    <img src="https://img.shields.io/github/stars/fengtianxi001/MTools">
-    <img src="https://img.shields.io/github/downloads/fengtianxi001/MTools/total">
+    <img src="https://img.shields.io/github/issues/fengtianxi001/MF-IMG2GIF">
+    <img src="https://img.shields.io/github/forks/fengtianxi001/MF-IMG2GIF">
+    <img src="https://img.shields.io/github/stars/fengtianxi001/MF-IMG2GIF">
+    <img src="https://img.shields.io/github/downloads/fengtianxi001/MF-IMG2GIF/total">
   </div>
 </div>
 
@@ -27,7 +27,7 @@
 - 程序无联网行为,可单机运行
 
 ## 主页面展示
-![show](https://github.com/fengtianxi001/MTools/blob/master/screenshots/main.png?raw=true)
+![show](https://github.com/fengtianxi001/MF-IMG2GIF/blob/main/sreenshot/page.gif?raw=true)
 
 
 
@@ -56,6 +56,6 @@ npm run build
 
 
 ## 更多页面效果展示
-![show](https://github.com/fengtianxi001/MTools/blob/master/screenshots/Snipaste_2021-10-18_22-21-28.png?raw=true)
-![show](https://github.com/fengtianxi001/MTools/blob/master/screenshots/Snipaste_2021-10-18_22-21-52.png?raw=true)
-![show](https://github.com/fengtianxi001/MTools/blob/master/screenshots/Snipaste_2021-10-18_22-22-02.png?raw=true)
+![show](https://raw.githubusercontent.com/fengtianxi001/MF-IMG2GIF/main/sreenshot/page1.png?raw=true)
+![show](https://raw.githubusercontent.com/fengtianxi001/MF-IMG2GIF/main/sreenshot/page2.png?raw=true)
+![show](https://raw.githubusercontent.com/fengtianxi001/MF-IMG2GIF/main/sreenshot/page3.png?raw=true)
