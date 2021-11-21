@@ -1,0 +1,24 @@
+//定义mixin方法
+@charset 'utf-8';
+
+@mixin bg_color($color) {
+	/*通过该函数设置主题颜色，后期方便统一管理；*/
+	background-color: $color;
+	[data-theme='theme_dark'] & {
+		background-color: $bgc_dark;
+	}
+	[data-theme='theme_light'] & {
+		background-color: $bgc_light;
+	}
+}
+
+@mixin border($color) {
+	/*通过该函数设置主题颜色，后期方便统一管理；*/
+	border-color: $color;
+	[data-theme='theme_dark'] & {
+		border-color: $border_color_dark;
+	}
+	[data-theme='theme_light'] & {
+		border-color: $border_color_light;
+	}
+}

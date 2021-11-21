@@ -1,0 +1,23 @@
+* {
+	padding: 0;
+	margin: 0;
+	font-family: pingFang;
+}
+
+::-webkit-scrollbar {
+	width: 2px;
+	height: 2px;
+}
+::-webkit-scrollbar-thumb {
+	height: 50px;
+	background-color: #353739;
+	border-radius: 2px;
+	// outline:2px solid #fff;
+	outline-offset: -2px;
+	// border: 1px solid #fff;
+}
+::-webkit-scrollbar-thumb:hover {
+	// height:50px;
+	// background-color:#9f9f9f;
+	// -webkit-border-radius:4px;
+}
