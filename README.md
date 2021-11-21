@@ -1,6 +1,6 @@
 # 🚀 MF-IMG2Gif
 <div align="center">
-	<img src="https://raw.githubusercontent.com/fengtianxi001/MTools/master/screenshots/banner.png">
+	<img src="https://raw.githubusercontent.com/fengtianxi001/MF-IMG2GIF/main/sreenshot/poster.png">
   <div>
     <img src="https://img.shields.io/github/languages/top/fengtianxi001/MTools">
     <img src="https://travis-ci.org/boennemann/badges.svg?branch=master">
