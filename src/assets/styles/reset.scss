@@ -1,0 +1,7 @@
+.arco-table-tr {
+  &:last-child {
+    .arco-table-td {
+      border: none;
+    }
+  }
+}
