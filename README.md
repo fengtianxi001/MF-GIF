@@ -2,7 +2,7 @@
 
 > 一款支持图片、视频、摄像头录像、屏幕共享转GIF的程序
 
-
+> 服务地址： https://fengtianxi001.github.io/MF-GIF/
 
 ## 项目说明
 
@@ -12,38 +12,32 @@
 
 - 同时你还可以选择`v2.0` web版本，该版本体验更佳，功能更新更快，将成为主要的迭代版本。
 
-
-
 ## 项目简介
 
 目前支持的功能如下
 
-- 图片转GIF
+- [x]  图片转GIF
 
-- 视频转GIF
+- [x]  视频转GIF
 
-- 开启摄像头录制视频转GIF
+- [x]  摄像头录像转GIF
 
-- 录制桌面屏幕转GIF
+- [x]  桌面屏幕转GIF
 
-- GIF参数设置
+- [x]  GIF参数设置
 
-- 暗夜模式
+- [x]  暗夜模式
 
-- 图片编辑
+- [x]  图片编辑
 
 
 
-## 项目地址
-
-[ 🔗 MF-GIF](https://fengtianxi001.github.io/MF-GIF/)
+## 项目截图
 
 ![](https://raw.githubusercontent.com/fengtianxi001/MF-GIF/v2.0/screenshot/banner_02.png)
 
-![](https://raw.githubusercontent.com/fengtianxi001/MF-GIF/v2.0/screenshot/banner_01.png)
 
 
-
-
+## 更新日志
 
 
