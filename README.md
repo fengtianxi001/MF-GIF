@@ -4,6 +4,10 @@
 
 > 服务地址： https://fengtianxi001.github.io/MF-GIF/
 
+<h1 align="center">
+  <img src="https://raw.githubusercontent.com/fengtianxi001/MF-GIF/v2.0/screenshot/cover.png" title="mf-gif">
+</h1>
+
 ## 项目说明
 
 目前项目有两个版本
@@ -32,9 +36,6 @@
 
 
 
-## 项目截图
-
-![](https://raw.githubusercontent.com/fengtianxi001/MF-GIF/v2.0/screenshot/banner_02.png)
 
 
 
