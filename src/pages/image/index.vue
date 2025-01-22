@@ -1,85 +1,93 @@
 <template>
   <div class="page">
-    <BaseTable
+    <button @click="onclick()">clickme</button>
+    <!-- <BaseTable
       v-model:selected="imageSelected"
       :operates="operates"
       :columns="columns"
       :data="images"
-    />
+    /> -->
   </div>
 </template>
 <script setup lang="tsx">
-import { BaseTable, BaseSpace, BaseLink } from '@/components'
-import { useImage } from './hooks/useImage.hook'
-import { computed } from 'vue'
-import ImageInfo from './src/ImageInfo.vue'
+import { fileChooser } from '@/utils/file'
 
-const {
-  images,
-  imageSelected,
-  onAddImages,
-  onRemoveImages,
-  onEditImage,
-  onConvertImage,
-} = useImage()
+const onclick = async () => {
+  const files = await fileChooser('image/*')
+  console.log('files', files)
+}
 
-const operates = computed(() => [
-  {
-    text: '批量导入',
-    type: 'primary',
-    onClick: () => onAddImages(),
-  },
-  {
-    text: '批量删除',
-    type: 'primary',
-    disabled: imageSelected.value.length <= 0,
-    onClick: () => onRemoveImages(imageSelected.value),
-  },
-  {
-    text: '开始转化',
-    type: 'primary',
-    // disabled: images.length <= 0,
-    onClick: () => onConvertImage(),
-  },
-])
+// import { BaseTable, BaseSpace, BaseLink } from '@/components'
+// import { useImage } from './useImage'
+// import { computed } from 'vue'
+// import Profile from './profile.vue'
 
-const columns = [
-  {
-    title: '基础信息',
-    dataIndex: 'name',
-    width: 400,
-    render: ({ record }: any) => <ImageInfo data={record} />,
-  },
-  {
-    title: '图片分辨率',
-    dataIndex: 'dpi',
-    align: 'center',
-    render: ({ record }: any) => `${record.dpi.width} * ${record.dpi.height}`,
-  },
-  {
-    title: '图片类型',
-    dataIndex: 'type',
-    align: 'center',
-  },
-  {
-    title: '最后编辑时间',
-    dataIndex: 'lastModified',
-    align: 'center',
-  },
-  {
-    title: '操作',
-    width: 140,
-    align: 'center',
-    render: ({ record }: any) => {
-      return (
-        <BaseSpace size="small">
-          <BaseLink onClick={() => onEditImage(record.id)}>编辑</BaseLink>
-          <BaseLink onClick={() => onRemoveImages([record.id])}>移除</BaseLink>
-        </BaseSpace>
-      )
-    },
-  },
-]
+// const {
+//   images,
+//   imageSelected,
+//   onAddImages,
+//   onRemoveImages,
+//   onEditImage,
+//   onConvertImage,
+// } = useImage()
+
+// const operates = computed(() => [
+//   {
+//     text: '批量导入',
+//     type: 'primary',
+//     onClick: () => onAddImages(),
+//   },
+//   {
+//     text: '批量删除',
+//     type: 'primary',
+//     disabled: imageSelected.value.length <= 0,
+//     onClick: () => onRemoveImages(imageSelected.value),
+//   },
+//   {
+//     text: '开始转化',
+//     type: 'primary',
+//     // disabled: images.length <= 0,
+//     onClick: () => onConvertImage(),
+//   },
+// ])
+
+// const columns = [
+//   {
+//     title: '基础信息',
+//     dataIndex: 'name',
+//     width: 400,
+//     render: ({ record }: any) => <Profile data={record} />,
+//   },
+//   {
+//     title: '图片分辨率',
+//     dataIndex: 'dpi',
+//     align: 'center',
+//     render: ({ record }: any) => `${record.dpi.width} * ${record.dpi.height}`,
+//   },
+//   {
+//     title: '图片类型',
+//     dataIndex: 'type',
+//     align: 'center',
+//   },
+//   {
+//     title: '最后编辑时间',
+//     dataIndex: 'lastModified',
+//     align: 'center',
+//   },
+//   {
+//     title: '操作',
+//     width: 140,
+//     align: 'center',
+//     render: ({ record }: any) => {
+//       return (
+//         <BaseSpace size="small">
+//           <BaseLink onClick={() => onEditImage(record.id)}>编辑</BaseLink>
+//           <BaseLink onClick={() => onRemoveImages([record.id])}>移除</BaseLink>
+//         </BaseSpace>
+//       )
+//     },
+//   },
+// ]
 </script>
 <style lang="scss" scoped>
 .page {

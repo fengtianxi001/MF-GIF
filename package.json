@@ -16,6 +16,7 @@
   },
   "dependencies": {
     "@arco-design/web-vue": "^2.56.3",
+    "animate.css": "^4.1.1",
     "autofit.js": "^3.0.7",
     "dayjs": "^1.11.13",
     "file-saver": "^2.0.5",

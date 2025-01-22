@@ -10,7 +10,13 @@
       </div>
     </div>
     <div class="layout-body">
-      <router-view />
+      <router-view v-slot="{ Component }">
+        <transition name="slide">
+          <keep-alive>
+            <component :is="Component" />
+          </keep-alive>
+        </transition>
+      </router-view>
     </div>
   </div>
 </template>
@@ -19,7 +25,17 @@ import LayoutBrand from './LayoutBrand.vue'
 import LayoutMenu from './LayoutMenu.vue'
 import LayoutActions from './LayoutActions.vue'
 </script>
-<style lang="scss" scoped>
+<style lang="scss">
+body[arco-theme='dark'] {
+  .layout-body {
+    background-image: url('@/assets/images/pattern_dark.svg') !important;
+  }
+}
+body[arco-theme='light'] {
+  .layout-body {
+    background-image: url('@/assets/images/pattern_light.svg') !important;
+  }
+}
 .layout {
   width: 100vw;
   height: 100vh;
@@ -40,16 +56,7 @@ import LayoutActions from './LayoutActions.vue'
     background-size: auto 100%;
   }
 }
-</style>
-<style lang="scss">
-body[arco-theme='dark'] {
-  .layout-body {
-    background-image: url('@/assets/images/pattern_dark.svg') !important;
-  }
-}
-body[arco-theme='light'] {
-  .layout-body {
-    background-image: url('@/assets/images/pattern_light.svg') !important;
-  }
+.slide-enter-active {
+  animation: slideInLeft 0.4s;
 }
 </style>
